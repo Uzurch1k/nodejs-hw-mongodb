@@ -18,6 +18,12 @@ import {
 
 const router = Router();
 
+router.get('/', (req, res) => {
+  res.json({
+    message: 'Welcome:)',
+  });
+});
+
 router.get('/contacts', ctrlWrapper(getContactsController));
 
 router.get('/contacts/:contactId', ctrlWrapper(getContactByIdController));
