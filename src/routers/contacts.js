@@ -9,7 +9,10 @@ import {
 } from '../controllers/contacts.js';
 
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
+
+import { checkRoles } from '../middlewares/checkRoles.js';
 import { validateBody } from '../middlewares/validateBody.js';
+import { authenticate } from '../middlewares/authenticate.js';
 
 import {
   createContactSchema,
@@ -18,28 +21,26 @@ import {
 
 const router = Router();
 
-router.get('/', (req, res) => {
-  res.json({
-    message: 'Welcome:)',
-  });
-});
+router.use(authenticate);
 
-router.get('/contacts', ctrlWrapper(getContactsController));
+router.get('/', checkRoles, ctrlWrapper(getContactsController));
 
-router.get('/contacts/:contactId', ctrlWrapper(getContactByIdController));
+router.get('/:contactId', checkRoles, ctrlWrapper(getContactByIdController));
 
 router.post(
-  '/contacts',
+  '',
+  checkRoles,
   validateBody(createContactSchema),
   ctrlWrapper(createContactController)
 );
 
 router.patch(
-  '/contacts/:contactId',
+  '/:contactId',
+  checkRoles,
   validateBody(updateContactSchema),
   ctrlWrapper(patchContactController)
 );
 
-router.delete('/contacts/:contactId', ctrlWrapper(deleteContactController));
+router.delete('/:contactId', checkRoles, ctrlWrapper(deleteContactController));
 
 export default router;
