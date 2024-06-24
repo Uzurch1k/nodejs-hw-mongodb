@@ -10,7 +10,6 @@ import {
 
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
 
-import { checkRoles } from '../middlewares/checkRoles.js';
 import { validateBody } from '../middlewares/validateBody.js';
 import { authenticate } from '../middlewares/authenticate.js';
 
@@ -23,24 +22,22 @@ const router = Router();
 
 router.use(authenticate);
 
-router.get('/', checkRoles, ctrlWrapper(getContactsController));
+router.get('/', ctrlWrapper(getContactsController));
 
-router.get('/:contactId', checkRoles, ctrlWrapper(getContactByIdController));
+router.get('/:contactId', ctrlWrapper(getContactByIdController));
 
 router.post(
   '',
-  checkRoles,
   validateBody(createContactSchema),
   ctrlWrapper(createContactController)
 );
 
 router.patch(
   '/:contactId',
-  checkRoles,
   validateBody(updateContactSchema),
   ctrlWrapper(patchContactController)
 );
 
-router.delete('/:contactId', checkRoles, ctrlWrapper(deleteContactController));
+router.delete('/:contactId', ctrlWrapper(deleteContactController));
 
 export default router;
