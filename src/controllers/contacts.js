@@ -68,7 +68,6 @@ export const getContactByIdController = async (req, res, next) => {
 
 export const createContactController = async (req, res) => {
   const { _id: userId } = req.user;
-  const { name, phoneNumber } = req.body;
   const photo = req.file;
 
   let photoUrl;
@@ -78,8 +77,7 @@ export const createContactController = async (req, res) => {
   }
 
   const contact = await createContact({
-    name,
-    phoneNumber,
+    ...req.body,
     photo: photoUrl,
     userId,
   });
