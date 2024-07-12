@@ -9,7 +9,6 @@ info:
     This is a documentation of contacts app
 tags:
   - name: Contacts
-  # теги, що ви будете використовувати
 servers:
   - url: http://localhost:3000
   - url: https://nodejs-hw-mongodb-s4ss.onrender.com
@@ -17,9 +16,9 @@ paths:
   /contacts/{id}:
     get:
       $ref: ../swagger/paths/contacts/{id}/get.yaml
-		patch:
+    patch:
       $ref: ../swagger/paths/contacts/{id}/patch.yaml
-		delete:
+    delete:
       $ref: ../swagger/paths/contacts/{id}/delete.yaml
   /contacts:
     post:
