@@ -30,4 +30,4 @@ responses:
               type: string
               example: Successfully deleted contact!
   '404':
-    $ref: '../../components/responses/404.yaml'
+    $ref: '../../../components/responses/404.yaml'
