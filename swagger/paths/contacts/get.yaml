@@ -29,11 +29,6 @@ parameters:
       enum: ['asc', 'desc']
       example: 'asc'
   - in: query
-    name: minAvgMark
-    schema:
-      type: number
-      example: 4
-  - in: query
     name: contactType
     schema:
       type: string

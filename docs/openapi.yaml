@@ -4,19 +4,23 @@ info:
   title: Contacts app
   license:
     name: Apache 2.0
-    url: <http://www.apache.org/licenses/LICENSE-2.0.html>
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
   description: >
     This is a documentation of contacts app
 tags:
   - name: Contacts
   # теги, що ви будете використовувати
 servers:
-  - url: <http://localhost:3000>
-  - url: #посилання на задеплоєний сайт
+  - url: http://localhost:3000
+  - url: https://nodejs-hw-mongodb-s4ss.onrender.com
 paths:
   /contacts/{id}:
     get:
       $ref: ../swagger/paths/contacts/{id}/get.yaml
+		patch:
+      $ref: ../swagger/paths/contacts/{id}/patch.yaml
+		delete:
+      $ref: ../swagger/paths/contacts/{id}/delete.yaml
   /contacts:
     post:
       $ref: ../swagger/paths/contacts/post.yaml
