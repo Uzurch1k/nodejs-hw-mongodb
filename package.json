@@ -8,9 +8,8 @@
     "build": "npm run build-docs",
     "build-docs": "redocly bundle --ext json -o docs/swagger.json",
     "preview-docs": "redocly preview-docs",
-    "lint": "eslint src/**/*.js",
-    "start": "node ./src/index.js",
-    "dev": "nodemon src/index.js"
+    "start": "node dist/index.js",
+    "dev": "nodemon ./src/index.js | pino-pretty"
   },
   "keywords": [],
   "author": "Uzurch1k <galcenkovlad7@gmail.com>",
